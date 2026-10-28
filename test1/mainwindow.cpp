@@ -26,7 +26,29 @@ MainWindow::~MainWindow()
 
 void MainWindow::btnNumClicked()
 {
-    ui->statusbar->showMessage(qobject_cast<QPushButton *>(sender())->text()+ "btn clicked");
+    QString str = ui->display->text();
+    str += qobject_cast<QPushButton *>(sender())->text();
+
+    ui->display->setText(str);
+
+}
+
+
+void MainWindow::on_btnPeriod_clicked()
+{
+     QString str = ui->display->text();
+     if (!str.contains("."))
+         str += qobject_cast<QPushButton *>(sender())->text();
+      ui->display->setText(str);
+
+}
+
+
+void MainWindow::on_btnDel_clicked()
+{
+    QString str = ui->display->text();
+    str =str.left(str.length()-1);
+    ui->display->setText(str);
 
 }
 
